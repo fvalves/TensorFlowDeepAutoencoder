@@ -2,7 +2,7 @@ import os
 import signal
 import subprocess
 
-from tensorflow import tensorboard as tb
+import tensorboard as tb
 
 from flags import FLAGS, home_out
 
@@ -11,7 +11,7 @@ _image_dir = FLAGS.data_dir
 _summary_dir = FLAGS.summary_dir
 
 _tb_pid_file = home_out(".tbpid")
-_tb_path = os.path.join(os.path.dirname(tb.__file__), 'tensorboard.py')
+_tb_path = os.path.join(os.path.dirname(tb.__file__), 'main.py')
 _tb_port = "6006"
 
 

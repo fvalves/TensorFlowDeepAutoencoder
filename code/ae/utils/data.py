@@ -39,9 +39,10 @@ def extract_images(filename):
       raise ValueError(
           'Invalid magic number %d in MNIST image file: %s' %
           (magic, filename))
-    num_images = _read32(bytestream)
-    rows = _read32(bytestream)
-    cols = _read32(bytestream)
+    num_images = _read32(bytestream)[0]
+    rows = _read32(bytestream)[0]
+    cols = _read32(bytestream)[0]
+    print('Rows: %s, Cols: %s, NumImages: %s' % (rows, cols, num_images))
     buf = bytestream.read(rows * cols * num_images)
     data = numpy.frombuffer(buf, dtype=numpy.uint8)
     data = data.reshape(num_images, rows, cols, 1)
